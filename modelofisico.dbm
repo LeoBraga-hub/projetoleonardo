@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.1.0-beta1" use-changelog="false" last-position="0,197" last-zoom="0.8" max-obj-count="6"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" name-color="#000000" sql-disabled="true">
+</schema>
+
+<table name="Bateria" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="200" y="100"/>
+	<column name="id_bateria" not-null="true">
+		<type name="char" length="4"/>
+	</column>
+	<column name="capaciade_armaz">
+		<type name="float" length="0"/>
+	</column>
+	<column name="tensao_nominal">
+		<type name="float" length="0"/>
+	</column>
+	<column name="tipo_bateria">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="Bateria_pk" type="pk-constr" table="public.&quot;Bateria&quot;">
+		<columns names="id_bateria" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_lote_Lote" index="4"/>
+	</customidxs>
+	<customidxs object-type="constraint">
+		<object name="Lote_fk" index="1"/>
+	</customidxs></table>
+
+<table name="Bateria_NN" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="40" y="460"/>
+	<column name="id_bateria" not-null="true">
+		<type name="char" length="4"/>
+	</column>
+	<column name="capaciade_armaz">
+		<type name="float" length="0"/>
+	</column>
+	<column name="tensao_nominal">
+		<type name="float" length="0"/>
+	</column>
+	<column name="tipo_bateria">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="Bateria_pk_NN" type="pk-constr" table="public.&quot;Bateria_NN&quot;">
+		<columns names="id_bateria" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Lote" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="840" y="120"/>
+	<column name="id_lote" not-null="true">
+		<type name="char" length="4"/>
+	</column>
+	<column name="data_producao">
+		<type name="date" length="0"/>
+	</column>
+	<column name="qtd_produzida_lote">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="tipo_bateria_lote">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="Lote_pk" type="pk-constr" table="public.&quot;Lote&quot;">
+		<columns names="id_lote" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Lote_NN" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1260" y="480"/>
+	<column name="id_lote" not-null="true">
+		<type name="char" length="4"/>
+	</column>
+	<column name="data_producao">
+		<type name="date" length="0"/>
+	</column>
+	<column name="qtd_produzida_lote">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="tipo_bateria_lote">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="Lote_pk_NN" type="pk-constr" table="public.&quot;Lote_NN&quot;">
+		<columns names="id_lote" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Teste_baterias" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<position x="640" y="460"/>
+	<column name="teste_temp">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="teste_ciclo">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="teste_desc">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="aprovado">
+		<type name="boolean" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="id_bateria_Bateria_NN" index="1"/>
+		<object name="id_lote_Lote_NN" index="5"/>
+	</customidxs>
+	<customidxs object-type="constraint">
+		<object name="Bateria_NN_fk" index="2"/>
+		<object name="Lote_NN_fk" index="1"/>
+		<object name="Teste_baterias_pk" index="0"/>
+	</customidxs></table>
+
+<relationship name="Relacionamento" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.&quot;Lote_NN&quot;"
+	 dst-table="public.&quot;Teste_baterias&quot;"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+>
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="Participa" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.&quot;Bateria_NN&quot;"
+	 dst-table="public.&quot;Teste_baterias&quot;"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+>
+	<label ref-type="name-label">
+		<position x="29.1436" y="23.3568"/>
+	</label>
+</relationship>
+
+<relationship name="Contem" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#9242cb"
+	 src-table="public.&quot;Lote&quot;"
+	 dst-table="public.&quot;Bateria&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="4.14357" y="27.343"/>
+	</label>
+</relationship>
+
+</dbmodel>

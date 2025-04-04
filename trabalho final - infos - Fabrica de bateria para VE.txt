@@ -1,0 +1,21 @@
+analise: quais dados coletar para o banco de dados? 
+DER - Diagrama, entidade, relacionamento
+	retangulo = tabela
+	bolas brancas = atributos
+	bolas breenchidas (chaves) =	foreign key (FK) = chave estrangeira = chave que vem de outra tabela
+					chave primaria (PK) = chaves primárias chave que n pode se repetir para cada sujeito da tabela
+	retangulo com bolas brancas = tabela com atributos
+	retangulo com bolas preenchidas = tabela com chaves
+	
+	4 tabelas - 1 relação (1,n) e 1 relação (n,n)
+	- criar duas tabelas com umas 4 colunas e relacionaras duas com (1,n)
+		
+	relação (n,n) necessita de 3 tabelas
+- Levantamento de dados a coletar e armazenar no banco
+-
+-
+-
+-
+-
+-
+-
